@@ -31,23 +31,7 @@ public class ForecastFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ScrollView view = (ScrollView) inflater.inflate(R.layout.fragment_forecast2, container, false);
-        LinearLayout weatherContainer = view.findViewById(R.id.weather_container);
-
-        for(int i = 0; i < 14; i++){
-            LinearLayout row = (LinearLayout) inflater.inflate(R.layout.weather_row, null);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(30, 0, 0, 10);
-
-            ((TextView) row.findViewById(R.id.day_row_date)).setText(dayName[i%7]);
-            int index = rand.nextInt((iconArray.length- 1) - 0 + 1) + 0;
-            ((ImageView) row.findViewById(R.id.day_row_icon)).setImageResource(iconArray[index]);
-            ((TextView) row.findViewById(R.id.day_row_status)).setText(weatherStatus[index]);
-            int temperature = rand.nextInt((30-20) +1 ) + 20;
-            ((TextView) row.findViewById(R.id.day_row_temp)).setText(temperature +"C-" + (temperature+3) + "C");
-            weatherContainer.addView(row, layoutParams);
-        }
-        return view;
+        return inflater.inflate(R.layout.fragment_forecast, container, false);
+        
     }
 }
